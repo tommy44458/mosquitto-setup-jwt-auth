@@ -26,3 +26,7 @@ else
 fi
 
 sudo systemctl enable mosquitto
+
+echo "run mosquitto"
+sudo service mosquitto reload
+sudo service mosquitto start

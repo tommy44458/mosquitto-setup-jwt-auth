@@ -48,7 +48,7 @@ else
 fi
 
 echo "setup mosquitto auth"
-sudo $ROOT/setup-mqtt-auth.sh
+$ROOT/setup-mqtt-auth.sh
 
 sudo systemctl unmask mosquitto service
 

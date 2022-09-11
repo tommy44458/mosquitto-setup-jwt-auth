@@ -1,6 +1,37 @@
 # mosquitto-setup
 Auto install & setup mosquitto broker and ACL policy using JWT auth in a Linux environment.
 
+## Requirements
+This package uses `Go modules` to manage dependencies. As it interacts with `mosquitto`, it makes use of `cgo`.
+
+Only Linux (tested in Debian, Ubuntu and Mint ùs) and MacOS are supported.
+
+Before attempting to build the plugin, make sure you have go installed on the system.
+The minimum required GO version for the current release is 1.13.8.
+To check which version (if any) of Go is installed on the system, simply run the following:
+
+```
+go version
+```
+
+If Go is not installed or the installed version is older than 1.13.8, please update it.
+You can retrieve and install the latest version of Go from the official [Go download website](https://golang.org/dl/):
+
+```
+# Update the following as per your system configuration
+export GO_VERSION=1.16.4
+export GO_OS=linux
+export GO_ARCH=amd64
+
+wget https://dl.google.com/go/go${GO_VERSION}.${GO_OS}-${GO_ARCH}.tar.gz -O golang.tar.gz
+sudo tar -C /usr/local -xzf golang.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+rm golang.tar.gz
+
+# Prints the Go version
+go version
+```
+
 ## Setup mosquitto
 
 #### set broker listen port /mqtt_broker/default.conf

@@ -34,7 +34,7 @@ go version
 
 ## Setup mosquitto
 
-#### set broker listen port /mqtt_broker/default.conf
+#### Set broker listen port /mqtt_broker/default.conf
 ```
 listener 1883
 protocol mqtt
@@ -42,7 +42,7 @@ listener 8083
 protocol websockets
 ```
 
-#### set config of mosquitto /mqtt_broker/mosquitto.conf
+#### Set config of mosquitto /mqtt_broker/mosquitto.conf
 ```
 pid_file /var/run/mosquitto.pid
 
@@ -54,15 +54,15 @@ log_dest file /var/log/mosquitto/mosquitto.log
 include_dir /etc/mosquitto/conf.d
 ```
 
-#### set routine policy /mqtt_broker/setup-mqtt-broker.conf
+#### Set routine policy /mqtt_broker/setup-mqtt-broker.conf
 ```
 # restart broker per 30 min
 COMMAND="*/30 * * * * $SOURCE"
 ```
 
-## Setup JWT acl
+## Setup JWT ACL
 
-#### set acl policy /mqtt_broker/go-auth.conf
+#### Set ACL policy /mqtt_broker/go-auth.conf
 ```
 # database config
 auth_opt_jwt_pg_host DB_HOST

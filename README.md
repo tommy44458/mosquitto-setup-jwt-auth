@@ -1,4 +1,4 @@
-# mosquitto-setup
+# mosquitto-setup-jwt-auth
 Auto install & setup mosquitto broker and ACL policy using JWT auth in a Linux environment.
 
 ## Requirements

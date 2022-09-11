@@ -2,6 +2,9 @@
 
 ROOT=$(dirname $0)
 
+sudo apt-get install libc-ares-dev
+sudo apt-get install libcurl4-openssl-dev
+
 echo "installing mosquitto"
 sudo apt-get install mosquitto mosquitto-clients
 

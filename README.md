@@ -69,16 +69,17 @@ auth_opt_jwt_pg_host DB_HOST
 auth_opt_jwt_pg_port DB_PORT
 auth_opt_jwt_pg_dbname DB_NAME
 auth_opt_jwt_pg_user DB_USER
-auth_opt_jwt_pg_password DB_POSSWARD
+auth_opt_jwt_pg_password DB_PASSWORD
 
 # get username sql
-auth_opt_jwt_userquery select count(*) from "user" where username = $1 limit 1
+auth_opt_jwt_userquery select count(*) from USER_QUERY_TABLE where USER_FIELD = $1 limit 1
 # get admin user sql
-auth_opt_jwt_superquery select count(*) from "user" where username = $1
+auth_opt_jwt_pg_superquery select count(*) from USER_QUERY_TABLE where USER_FIELD = $1 and USER_IS_ADMIN = true limit 1
 # get acl policy by username
-auth_opt_jwt_aclquery select distinct 'application/' || a.id || '/#' from "user" u inner join organization_user ou on ou.user_id = u.id inner join organization o on o.id = ou.organization_id inner join application a on a.organization_id = o.id where u.username = $1 and $2 = $2
+auth_opt_jwt_pg_aclquery select topic FROM ACL_QUERY_TABLE where USER_FIELD = $1 and rw >= $2
 # use username field
-auth_opt_jwt_userfield username
+auth_opt_jwt_userfield USER_FIELD
+
 
 auth_opt_jwt_parse_token true
 # JWT secret key
@@ -88,5 +89,5 @@ auth_opt_jwt_secret JWT_SECRET_KEY
 ## Run setup script
 
 ```
-sudo ./setup-mqtt-broker.sh 
+sudo ./setup-mqtt-broker.sh
 ```

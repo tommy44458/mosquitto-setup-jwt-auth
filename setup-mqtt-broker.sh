@@ -6,13 +6,13 @@ sudo apt-get install libwebsockets8 libwebsockets-dev libc-ares2 libc-ares-dev o
 
 if [ ! -f "/usr/local/sbin/mosquitto" ]; then
    echo "installing mosquitto"
-   wget http://mosquitto.org/files/source/mosquitto-1.6.10.tar.gz
-   tar xzvf mosquitto-1.6.10.tar.gz
+   wget http://mosquitto.org/files/source/mosquitto-1.6.10.tar.gz -O $ROOT/mosquitto-1.6.10.tar.gz
+   tar xzvf $ROOT/mosquitto-1.6.10.tar.gz -C $ROOT
 
    # use owner config
-   sudo cp ./mqtt_broker/mosquitto/config.mk mosquitto-1.6.10/
+   sudo cp $ROOT/mqtt_broker/mosquitto/config.mk $ROOT/mosquitto-1.6.10/
 
-   cd mosquitto-1.6.10
+   cd $ROOT/mosquitto-1.6.10
    make
    sudo make install
    sudo groupadd mosquitto
@@ -20,10 +20,10 @@ if [ ! -f "/usr/local/sbin/mosquitto" ]; then
    sudo mkdir -p /var/log/mosquitto/ /var/lib/mosquitto/
    sudo chown -R mosquitto:mosquitto /var/log/mosquitto/
    sudo chown -R mosquitto:mosquitto /var/lib/mosquitto/
-   cd ..
+   cd -
 
-   rm -rf mosquitto-1.6.10.tar.gz
-   rm -rf mosquitto-1.6.10
+   rm -rf $ROOT/mosquitto-1.6.10.tar.gz
+   rm -rf $ROOT/mosquitto-1.6.10
 fi
 
 echo "set config file"

@@ -3,10 +3,8 @@
 ROOT=$(dirname $0)
 
 if [ ! -d "$ROOT/mosquitto-go-auth" ]; then
-    git clone https://github.com/iegomez/mosquitto-go-auth.git $ROOT/mosquitto-go-auth
+    git clone https://github.com/tommy44458/mosquitto-go-auth.git $ROOT/mosquitto-go-auth
 fi
-
-sudo cp $ROOT/mqtt_broker/go-auth.go $ROOT/mosquitto-go-auth/
 
 if [ ! -f "$ROOT/mosquitto-go-auth/go-auth.so" ]; then
     cd $ROOT/mosquitto-go-auth

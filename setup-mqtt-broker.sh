@@ -33,6 +33,7 @@ SERVICE=$ROOT/mqtt_broker/mosquitto.
 
 if [ ! -d "/etc/mosquitto/" ]; then
    sudo mkdir /etc/mosquitto/
+   sudo mkdir /etc/mosquitto/conf.d/
 fi
 
 sudo cp $PORT_CONF /etc/mosquitto/conf.d/

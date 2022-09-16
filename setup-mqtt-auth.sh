@@ -2,18 +2,22 @@
 
 ROOT=$(dirname $0)
 
-if [ ! -d "$ROOT/mosquitto-go-auth" ]; then
-    git clone https://github.com/tommy44458/mosquitto-go-auth.git $ROOT/mosquitto-go-auth
-fi
+if [ ! -f "/etc/mosquitto/conf.d/go-auth.so" ]; then
 
-if [ ! -f "$ROOT/mosquitto-go-auth/go-auth.so" ]; then
-    cd $ROOT/mosquitto-go-auth
-    make
-    cd -
-fi
+    if [ ! -d "$ROOT/mosquitto-go-auth" ]; then
+        git clone https://github.com/tommy44458/mosquitto-go-auth.git $ROOT/mosquitto-go-auth
+    fi
 
-if [ ! -d "/etc/mosquitto/conf.d/" ]; then
-   sudo mkdir /etc/mosquitto/conf.d/
+    if [ ! -f "$ROOT/mosquitto-go-auth/go-auth.so" ]; then
+        cd $ROOT/mosquitto-go-auth
+        make
+        cd -
+    fi
+
+    if [ ! -d "/etc/mosquitto/conf.d/" ]; then
+        sudo mkdir /etc/mosquitto/conf.d/
+    fi
+
 fi
 
 sudo cp $ROOT/mosquitto-go-auth/go-auth.so /etc/mosquitto/conf.d/

@@ -12,6 +12,10 @@ if [ ! -f "$ROOT/mosquitto-go-auth/go-auth.so" ]; then
     cd -
 fi
 
+if [ ! -d "/etc/mosquitto/conf.d/" ]; then
+   sudo mkdir /etc/mosquitto/conf.d/
+fi
+
 sudo cp $ROOT/mosquitto-go-auth/go-auth.so /etc/mosquitto/conf.d/
 sudo cp $ROOT/mqtt_broker/go-auth.conf /etc/mosquitto/conf.d/
 

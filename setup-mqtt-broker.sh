@@ -4,7 +4,7 @@ ROOT=$(dirname $0)
 
 sudo apt-get install libwebsockets8 libwebsockets-dev libc-ares2 libc-ares-dev openssl uuid uuid-dev cmake
 
-if [ ! -f "/usr/local/sbin/mosquitto" ]; then
+if [ ! -d "/usr/local/sbin/mosquitto" ]; then
    echo "installing mosquitto"
    wget http://mosquitto.org/files/source/mosquitto-1.6.10.tar.gz -O $ROOT/mosquitto-1.6.10.tar.gz
    tar xzvf $ROOT/mosquitto-1.6.10.tar.gz -C $ROOT

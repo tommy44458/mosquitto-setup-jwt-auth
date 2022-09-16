@@ -29,7 +29,12 @@ fi
 echo "set config file"
 PORT_CONF=$ROOT/mqtt_broker/default.conf
 MAIN_CONF=$ROOT/mqtt_broker/mosquitto.conf
-SERVICE=$ROOT/mqtt_broker/mosquitto.service
+SERVICE=$ROOT/mqtt_broker/mosquitto.
+
+if [ ! -d "/etc/mosquitto/" ]; then
+   sudo mkdir /etc/mosquitto/
+fi
+
 sudo cp $PORT_CONF /etc/mosquitto/conf.d/
 sudo cp $MAIN_CONF /etc/mosquitto/
 sudo cp $SERVICE /etc/systemd/system/

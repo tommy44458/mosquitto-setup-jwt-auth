@@ -29,15 +29,21 @@ fi
 echo "set config file"
 PORT_CONF=$ROOT/mqtt_broker/default.conf
 MAIN_CONF=$ROOT/mqtt_broker/mosquitto.conf
-SERVICE=$ROOT/mqtt_broker/mosquitto.
+SERVICE=$ROOT/mqtt_broker/mosquitto.service
 
 if [ ! -d "/etc/mosquitto/" ]; then
    sudo mkdir /etc/mosquitto/
+fi
+
+if [ ! -d "/etc/mosquitto/conf.d/" ]; then
    sudo mkdir /etc/mosquitto/conf.d/
 fi
 
-sudo cp $PORT_CONF /etc/mosquitto/conf.d/
+sleep 1
+
+echo "cp config file"
 sudo cp $MAIN_CONF /etc/mosquitto/
+sudo cp $PORT_CONF /etc/mosquitto/conf.d/
 sudo cp $SERVICE /etc/systemd/system/
 
 echo "set restart policy that restart the broker per 30 min"

@@ -2,7 +2,7 @@
 
 ROOT=$(dirname $0)
 
-sudo apt-get install libwebsockets libwebsockets-dev libc-ares2 libc-ares-dev openssl uuid uuid-dev cmake
+sudo apt-get -y install libwebsockets libwebsockets-dev libc-ares2 libc-ares-dev openssl uuid uuid-dev cmake
 
 if [ ! -f "/usr/local/sbin/mosquitto" ]; then
    echo "installing mosquitto"

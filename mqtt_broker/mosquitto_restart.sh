@@ -1,5 +1,5 @@
 if [ "`ps -aux | grep /usr/sbin/mosquitto | wc -l`" == "1" ] then
-    systemctl restart mosquitto
+    sudo service mosquitto restart
     exit 0
 fi
 

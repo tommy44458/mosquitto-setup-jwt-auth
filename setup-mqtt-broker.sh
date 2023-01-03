@@ -50,9 +50,10 @@ echo "set restart policy that restart the broker per 30 min"
 LIST=`crontab -l`
 
 SOURCE=$ROOT/mqtt_broker/mosquitto_restart.sh
-COMMAND="*/30 * * * * $SOURCE"
+sudo cp $SOURCE /mosquitto_restart.sh
+COMMAND="*/30 * * * * /mosquitto_restart.sh"
 
-if echo "$LIST" | grep -q "$SOURCE"; then
+if echo "$LIST" | grep -q "/mosquitto_restart.sh"; then
    echo "The back job had been added.";
 
 else

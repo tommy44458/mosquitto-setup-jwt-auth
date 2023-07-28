@@ -1,2 +1,2 @@
-sudo service mosquitto restart
+# sudo service mosquitto restart
 exit 0
